@@ -1,0 +1,48 @@
+<div class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6 mt-8">
+
+  <h2 class="text-2xl font-bold text-primary text-center mb-4">Iniciar Sesión</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4">
+
+    <div>
+      <label for="email" class="block text-sm font-medium text-primary">Email</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        class="w-full p-2 border border-secondary rounded focus:outline-none focus:border-accent"
+        placeholder="you@example.com"
+      />
+      <div *ngIf="isInvalidAndTouched('email')" class="text-red-600 text-sm mt-1">
+        Email no es válido.
+      </div>
+    </div>
+
+    <div>
+      <label for="password" class="block text-sm font-medium text-primary">Contraseña</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        class="w-full p-2 border border-secondary rounded focus:outline-none focus:border-accent"
+        placeholder="Contraseña"
+      />
+      <div *ngIf="isInvalidAndTouched('password')" class="text-red-600 text-sm mt-1">
+        La contraseña debe tener al menos 6 caracteres.
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full p-2 mt-4 bg-primary text-white rounded-lg hover:bg-accent transition"
+      [disabled]="loginForm.invalid"
+    >
+      Iniciar Sesión
+    </button>
+  </form>
+
+  <p class="text-center mt-4 text-sm text-secondary">
+    ¿No tienes una cuenta?
+    <a routerLink="/auth0/register" class="text-primary hover:underline">Regístrate</a>
+  </p>
+</div>
