@@ -1,28 +1,25 @@
 <div class="flex h-screen bg-light">
 
-    <dashboard-sidebar
-      class="transition-all duration-300"
-      [ngClass]="{ 'w-64': isSidebarOpen(), 'w-0': !isSidebarOpen() }"
-      [isSidebarOpen]="isSidebarOpen()"
-      (toggleSidebar)="toggleSidebar()"
-    ></dashboard-sidebar>
-  
-    <div class="flex-1 flex flex-col">
-      <dashboard-navbar class="bg-primary text-light"></dashboard-navbar>
+  <dashboard-sidebar
+    class="transition-all duration-300"
+    [ngClass]="{ 'w-64': isSidebarOpen, 'w-0': !isSidebarOpen }"
+  ></dashboard-sidebar>
 
-      <button
-        class="fixed top-4 right-4 z-20 bg-secondary text-light p-4 rounded-full shadow-lg transition-all duration-300 mt-14"
-        (click)="toggleSidebar()"
-      >
-        <span *ngIf="!isSidebarOpen()">☰</span>
-        <span *ngIf="isSidebarOpen()">✕</span>
-      </button>
-  
-      <div class="flex-1 p-4">
-        <router-outlet></router-outlet>
-      </div>
-  
-      <dashboard-footer class="bg-secondary text-light"></dashboard-footer>
+  <div class="flex-1 flex flex-col">
+    <dashboard-navbar class="bg-primary text-light"></dashboard-navbar>
+
+    <button
+      class="fixed top-4 right-4 z-20 bg-secondary text-light p-3 rounded-full shadow-lg transition-all duration-300 mt-14"
+      (click)="toggleSidebar()"
+    >
+      <span *ngIf="!isSidebarOpen">☰</span>
+      <span *ngIf="isSidebarOpen">✕</span>
+    </button>
+
+    <div class="flex-1 p-4">
+      <router-outlet></router-outlet>
     </div>
+
+    <dashboard-footer class="bg-secondary text-light"></dashboard-footer>
   </div>
-  
+</div>

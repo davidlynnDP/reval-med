@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SidebarService } from './services/sidebar.service';
 
 @Component({
   standalone: true,
@@ -22,10 +23,14 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 })
 export class DashboardComponent { 
 
-  isSidebarOpen: WritableSignal<boolean> = signal(false);
+  private sidebarService = inject(SidebarService);
 
   toggleSidebar() {
-    this.isSidebarOpen.update((open) => !open);
+    this.sidebarService.toggleSidebar();
+  }
+
+  get isSidebarOpen() {
+    return this.sidebarService.sidebarState;
   }
   
 }

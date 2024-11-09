@@ -17,6 +17,7 @@ import { MenuItem, APP_ROUTES } from '../../routes';
 export class NavbarComponent implements OnInit {
 
   private readonly route = inject(ActivatedRoute);
+  
   public menuItems: MenuItem[] = [];
   public isDropdownOpen: WritableSignal<boolean> = signal(false);
 

@@ -29,6 +29,11 @@ export const routes: Routes = [
         redirectTo: 'login',
         pathMatch: 'full',
       },
+      {
+        path: '**',
+        redirectTo: 'login',
+        pathMatch: 'full',
+      },
     ],
   },
   {
@@ -70,7 +75,17 @@ export const routes: Routes = [
             redirectTo: 'overview',
             pathMatch: 'full',
           },
+          {
+            path: '**',
+            redirectTo: 'overview',
+            pathMatch: 'full',
+          },
         ],
+      },
+      {
+        path: '**',
+        redirectTo: 'revaluation-management/overview',
+        pathMatch: 'full',
       },
     ],
   },
