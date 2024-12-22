@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, signal, computed, effect } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal, effect } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 
 import { HEADQUARTERS, LOCATIONS, SERVICES } from './constants';
@@ -18,24 +18,24 @@ import type { Headquarter, Location, Service } from './constants';
 export class PatientsComponent {
   private readonly fb = inject(FormBuilder);
 
-  headquartersList: Headquarter[] = HEADQUARTERS;
+  public headquartersList: Headquarter[] = HEADQUARTERS;
 
-  headquartersForm = this.fb.group({
+  public headquartersForm = this.fb.group({
     headquarter: ['', Validators.required],
   });
 
-  servicesForm = this.fb.group({
+  public servicesForm = this.fb.group({
     service: ['', Validators.required],
   });
 
-  locationsForm = this.fb.group({
+  public locationsForm = this.fb.group({
     location: ['', Validators.required],
   });
 
-  services = signal<Service[]>([]);
-  locations = signal<Location[]>([]);
+  public services = signal<Service[]>([]);
+  public locations = signal<Location[]>([]);
 
-  selectedData = signal<{ headquarter: string; service: string; location: string } | null>(null);
+  public selectedData = signal<{ headquarter: string; service: string; location: string } | null>(null);
 
   constructor() {
     this.headquartersForm.get('headquarter')?.valueChanges.subscribe((value) => {
@@ -70,12 +70,12 @@ export class PatientsComponent {
     });
   }
 
-  fetchServices(headquarter: string): Service[] {
+  public fetchServices(headquarter: string): Service[] {
     //! Simular API call con headquarter
     return SERVICES;
   }
 
-  fetchLocations(service: string): Location[] {
+  public fetchLocations(service: string): Location[] {
     //! Simular API call con service
     return LOCATIONS;
   }
