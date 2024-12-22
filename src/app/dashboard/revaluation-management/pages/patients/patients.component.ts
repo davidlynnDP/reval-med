@@ -18,7 +18,7 @@ import type { Headquarter, Location, Service } from './constants';
 export class PatientsComponent {
   private readonly fb = inject(FormBuilder);
 
-  public headquartersList: Headquarter[] = HEADQUARTERS;
+  public headquarters = signal<Headquarter[]>(HEADQUARTERS);;
 
   public headquartersForm = this.fb.group({
     headquarter: ['', Validators.required],
