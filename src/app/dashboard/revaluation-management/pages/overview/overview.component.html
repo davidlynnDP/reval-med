@@ -1,4 +1,125 @@
-<h1 class="text-2xl font-bold">Resumen General</h1>
-<p class="mt-2 text-gray-600">
-  Información general sobre el número de pacientes en urgencias y totalización de órdenes.
-</p>
+<div class="space-y-8">
+  <!-- Sección de Configuración de Pacientes -->
+  <div class="p-6 bg-white rounded-xl shadow-md space-y-4 max-w-2xl mx-auto">
+    <h2 class="text-2xl font-bold text-center">Configuración de Tiempos para Pacientes</h2>
+    <form [formGroup]="configPatientForm" (ngSubmit)="onSubmit(configPatientForm, 'Pacientes')" class="space-y-4">
+      <label for="hours-patient" class="block text-sm font-medium text-gray-700">
+        Selecciona las horas:
+      </label>
+      <input
+        id="hours-patient"
+        type="range"
+        min="1"
+        max="7"
+        formControlName="hours"
+        class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
+        style="background: linear-gradient(to right, #38a169 0%, #e53e3e 100%);"
+      />
+      @if (isInvalidAndTouched(configPatientForm, 'hours')) {
+        <div class="text-red-500 text-sm">El campo es obligatorio, solo se aceptan valores entre 1 y 7</div>
+      }
+      <div class="text-center text-sm">Horas seleccionadas: <span class="font-bold">{{ configPatientForm.value.hours }}</span></div>
+      <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition">Guardar Configuración</button>
+    </form>
+  </div>
+
+  <!-- Sección de los demás formularios -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Configuración de Medicamentos -->
+    <div class="p-6 bg-white rounded-xl shadow-md space-y-4">
+      <h2 class="text-xl font-bold text-center">Configuración de Tiempos para Medicamentos</h2>
+      <form [formGroup]="configMedicamentosForm" (ngSubmit)="onSubmit(configMedicamentosForm, 'Medicamentos')" class="space-y-4">
+        <label for="hours-medicamentos" class="block text-sm font-medium text-gray-700">
+          Selecciona las horas:
+        </label>
+        <input
+          id="hours-medicamentos"
+          type="range"
+          min="1"
+          max="7"
+          formControlName="hours"
+          class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
+          style="background: linear-gradient(to right, #38a169 0%, #e53e3e 100%);"
+        />
+        @if (isInvalidAndTouched(configMedicamentosForm, 'hours')) {
+          <div class="text-red-500 text-sm">El campo es obligatorio, solo se aceptan valores entre 1 y 7</div>
+        }
+        <div class="text-center text-sm">Horas seleccionadas: <span class="font-bold">{{ configMedicamentosForm.value.hours }}</span></div>
+        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition">Guardar Configuración</button>
+      </form>
+    </div>
+
+    <!-- Repetir para Laboratorios, Imágenes e Interconsultas -->
+    <!-- Configuración de Laboratorios -->
+    <div class="p-6 bg-white rounded-xl shadow-md space-y-4">
+      <h2 class="text-xl font-bold text-center">Configuración de Tiempos para Laboratorios</h2>
+      <form [formGroup]="configLaboratoriosForm" (ngSubmit)="onSubmit(configLaboratoriosForm, 'Laboratorios')" class="space-y-4">
+        <label for="hours-laboratorios" class="block text-sm font-medium text-gray-700">
+          Selecciona las horas:
+        </label>
+        <input
+          id="hours-laboratorios"
+          type="range"
+          min="1"
+          max="7"
+          formControlName="hours"
+          class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
+          style="background: linear-gradient(to right, #38a169 0%, #e53e3e 100%);"
+        />
+        @if (isInvalidAndTouched(configLaboratoriosForm, 'hours')) {
+          <div class="text-red-500 text-sm">El campo es obligatorio, solo se aceptan valores entre 1 y 7</div>
+        }
+        <div class="text-center text-sm">Horas seleccionadas: <span class="font-bold">{{ configLaboratoriosForm.value.hours }}</span></div>
+        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition">Guardar Configuración</button>
+      </form>
+    </div>
+
+    <!-- Configuración de Imágenes -->
+    <div class="p-6 bg-white rounded-xl shadow-md space-y-4">
+      <h2 class="text-xl font-bold text-center">Configuración de Tiempos para Imágenes</h2>
+      <form [formGroup]="configImagenesForm" (ngSubmit)="onSubmit(configImagenesForm, 'Imágenes')" class="space-y-4">
+        <label for="hours-imagenes" class="block text-sm font-medium text-gray-700">
+          Selecciona las horas:
+        </label>
+        <input
+          id="hours-imagenes"
+          type="range"
+          min="1"
+          max="7"
+          formControlName="hours"
+          class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
+          style="background: linear-gradient(to right, #38a169 0%, #e53e3e 100%);"
+        />
+        @if (isInvalidAndTouched(configImagenesForm, 'hours')) {
+          <div class="text-red-500 text-sm">El campo es obligatorio, solo se aceptan valores entre 1 y 7</div>
+        }
+        <div class="text-center text-sm">Horas seleccionadas: <span class="font-bold">{{ configImagenesForm.value.hours }}</span></div>
+        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition">Guardar Configuración</button>
+      </form>
+    </div>
+
+    <!-- Configuración de Interconsultas -->
+    <div class="p-6 bg-white rounded-xl shadow-md space-y-4">
+      <h2 class="text-xl font-bold text-center">Configuración de Tiempos para Interconsultas</h2>
+      <form [formGroup]="configInterconsultasForm" (ngSubmit)="onSubmit(configInterconsultasForm, 'Interconsultas')" class="space-y-4">
+        <label for="hours-interconsultas" class="block text-sm font-medium text-gray-700">
+          Selecciona las horas:
+        </label>
+        <input
+          id="hours-interconsultas"
+          type="range"
+          min="1"
+          max="7"
+          formControlName="hours"
+          class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
+          style="background: linear-gradient(to right, #38a169 0%, #e53e3e 100%);"
+        />
+        @if (isInvalidAndTouched(configInterconsultasForm, 'hours')) {
+          <div class="text-red-500 text-sm">El campo es obligatorio, solo se aceptan valores entre 1 y 7</div>
+        }
+        <div class="text-center text-sm">Horas seleccionadas: <span class="font-bold">{{ configInterconsultasForm.value.hours }}</span></div>
+        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition">Guardar Configuración</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+/* Estilo para el "thumb" del input range */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FF5733;
+    border: 1px solid #c13e1a;
+    cursor: pointer;
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FF5733;
+    border: 1px solid #c13e1a;
+    cursor: pointer;
+  }
+  
