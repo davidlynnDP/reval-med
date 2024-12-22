@@ -1,4 +1,49 @@
-<h1 class="text-2xl font-bold">Gestión de Pacientes</h1>
-<p class="mt-2 text-gray-600">
-  Aquí puedes gestionar el listado de consultorios disponibles y ver los pacientes asignados.
-</p>
+<div class="p-6 bg-gray-100 rounded-md shadow-md space-y-6">
+  <!-- Headquarters -->
+  <form [formGroup]="headquartersForm" class="space-y-4">
+    <label class="block">
+      <span class="text-gray-700">Headquarters</span>
+      <select
+        formControlName="headquarter"
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+      >
+        <option value="" disabled selected>Select a headquarter</option>
+        @for (headquarter of headquartersList; track headquarter.codeHeadquarter) {
+          <option [value]="headquarter.codeHeadquarter">{{ headquarter.nameHeadquarter }}</option>
+        }
+      </select>
+    </label>
+  </form>
+
+  <!-- Services -->
+  <form [formGroup]="servicesForm" class="space-y-4" [hidden]="!headquartersForm.valid">
+    <label class="block">
+      <span class="text-gray-700">Services</span>
+      <select
+        formControlName="service"
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+      >
+        <option value="" disabled selected>Select a service</option>
+        @for (service of services(); track service.codeService) {
+          <option [value]="service.codeService">{{ service.nameService }}</option>
+        }
+      </select>
+    </label>
+  </form>
+
+  <!-- Locations -->
+  <form [formGroup]="locationsForm" class="space-y-4" [hidden]="!servicesForm.valid">
+    <label class="block">
+      <span class="text-gray-700">Locations</span>
+      <select
+        formControlName="location"
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+      >
+        <option value="" disabled selected>Select a location</option>
+        @for (location of locations(); track location.codeLocation) {
+          <option [value]="location.codeLocation">{{ location.nameLocation }}</option>
+        }
+      </select>
+    </label>
+  </form>
+</div>
